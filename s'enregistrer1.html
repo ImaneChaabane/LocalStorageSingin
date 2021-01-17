@@ -47,6 +47,11 @@
             var Dataemail= document.getElementById("email").value;
             var DataPassword = document.getElementById("password").value;
             var DataConPassword= document.getElementById("confPassword").value;
+            
+            if ((DataNom && DataPrenom && Dataemail && DataPassword && DataConPassword) ==''){
+                alert("Veuillez remplir tout les champs")
+            }
+            else
 
            if(DataPassword != DataConPassword){
                alert("Veuillez entrer le mot de passe correcte")
