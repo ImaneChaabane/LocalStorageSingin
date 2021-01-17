@@ -38,6 +38,10 @@
             function ConnectUser() {
                 var loginEmail = document.getElementById("login-email").value;
                 var loginPass = document.getElementById("login-pass").value;
+                if ((loginEmail && loginPass) ==''){
+                    alert("Veuillez remplir les champs")
+                }
+                else
              if (localStorage.getItem('Utilisateurs')) {
         const allStoredUsers = JSON.parse(localStorage.getItem('Utilisateurs'));
         const matchedUser = allStoredUsers.filter(user => {
