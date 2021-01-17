@@ -36,7 +36,7 @@
             
         </form>
         <div class="form-group">
-            <center><a href="se conncter2.html"><button type="submit" class="btn btn-success btn-lg btn-block" style="width:50%" onclick="store()">Register Now</button></a></center>
+            <center><button type="submit" class="btn btn-success btn-lg btn-block" style="width:50%" onclick="store()">Register Now</button></center>
         </div>
     </div>
     <script>
@@ -64,6 +64,7 @@
             } else {
         localStorage.setItem('utilisateurs', JSON.stringify([{nom: DataNom, prenom: DataPrenom, email:Dataemail, password: DataPassword, confirmPassword:DataConPassword}]));
             }
+               window.location='se conncter2.html';
 }
         }
     </script>
