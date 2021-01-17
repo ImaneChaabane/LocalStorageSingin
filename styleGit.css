@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+
+.navigation{
+    background: black;
+    height: 110px;
+}
+.navigation h1{
+    color: white;
+    padding: 35px 0 0 75px;
+}
+
+body,#username{
+    background: #f0f4f7;
+}
+#searchForm{
+    
+    border-radius: 10px;
+    background: black;
+    width: 30%;margin: auto;
+    background: #f0f4f7;
+    box-shadow:  1px 1px 3px #b7bbbe,
+             -3px -3px 5px #ffffff;
+    margin-top: 90px;
+    
+}
+.input-group-text{
+    background-color: #0c0c0c;
+    border: 1px solid #020202;
+    border-radius: 10px;
+    color: #fefeff;
+    
+}
+.pb-1, .py-1{
+    height: 55px;
+    border-radius: 14px;
+    border:none;
+}
+.paragraph1{
+    color: black;
+    font-size: 27px;
+    margin-top: 50px;
+    /* margin-left: 150px; */
+    font-weight: bold;   
+}
+.card{
+    border-radius: 10px;
+    box-shadow:  0px 2px 3px #949292,
+             -3px -3px 3px #ffffff;
+    border: none;
+}
+.footer{
+    margin-top: 80px ;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 10px;
+    color: grey;
+}
+body.modal-open #wrapper{
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -ms-filter: blur(3px);
+    filter: blur(3px);
+}
+#TitreImage{
+    text-align: center;
+    font-weight: bold;
+}
+.modal-footer{
+    background: black;
+}
+.modal-footer a{
+    color: white;
+    width: 58%;
+    font-weight: bold;
+
+}
+.essai{
+    display: flex;
+    justify-content: space-around;
+   flex-direction: row;
+
+}
+h5{
+    text-align: center;
+    font-weight: bold;
+
+}

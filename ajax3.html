@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="styleGit.css">
+    <title>Document</title>
+</head>
+<body onload="firstStep()">
+    <div id="wrapper">
+        <!-- header -->
+            <div class="top_header">
+                <div class="navigation">
+                    <h1>Github .</h1>
+                </div>
+            </div>
+        <!-- fin header -->
+
+        <!-- input -->
+
+        <div class="input-group md-form form-sm form-2 pl-0 " id="searchForm" >
+            <input class="form-control my-0 py-1 red-border" type="text" placeholder="Username..." aria-label="Search"  id="username">
+            <div class="input-group-append" data-toggle="modal" data-target="#exampleModal">
+              <span class="input-group-text red lighten-3" id="basic-text1" onclick="search()"><i class="fas fa-search text-grey"
+                  aria-hidden="true"></i></span>
+            </div>
+        </div>
+        <!-- fin input -->
+
+      <div class="container">
+        <div class="paragraph1"><p>Github Profiles</p></div>
+        <!-- cards -->
+        <div class="card-deck">
+            <div class="card">
+              <img class="card-img-top photo" src="" alt="Users_Image">
+              <div class="card-body">
+                <h5 class="card-title LeNom">Nom d'utilisateur</h5>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top photo" src="" alt="Users_Image">
+              <div class="card-body">
+                <h5 class="card-title LeNom">Nom d'utilisateur</h5>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top photo" src="" alt="Users_Image">
+              <div class="card-body">
+                <h5 class="card-title LeNom">Nom d'utilisateur</h5>
+              </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top photo" src="" alt="Users_Image">
+                <div class="card-body">
+                  <h5 class="card-title LeNom">Nom d'utilisateur</h5>
+                </div>
+              </div>
+          </div>
+    </div>
+  </div>
+  <!-- fin cards -->
+
+  <!-- footer -->
+    <div class="footer">
+        Copyrights 2020/2021
+    </div>
+    <!-- fin footer -->
+
+    <!-- modal -->
+    <div class="modal" id="exampleModal" tabindex="-1" role="dialog"  aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card">
+              <img class="card-img-top" src="" alt="User_Image" id="ProfilImage">
+              <div class="card-body">
+                <h5 class="card-title" id="nameUser" >Profile non trouvé</h5>
+              </div>
+              <div class="essai">
+              <div ><labe >Followers:<span id="followers"></span></label></div>
+              <div><label>Repos: <span id="repos"></span></label></div>
+            </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#"  id="linkProfile">Profile</a>
+        </div>
+      </div>
+    </div>
+    <!-- fin modal -->
+        
+
+  <script>
+        function search(){
+
+            var username= document.getElementById("username").value;
+            var table = new XMLHttpRequest;
+            var DATA = "https://api.github.com/users/"+username;
+            var obj;
+            table.open("GET",DATA,true);
+            var exmodal= document.getElementById("exampleModal");
+
+            
+            table.onload = function(){
+
+                if (this.status == 200){
+
+                 jsonTable = JSON.parse(this.responseText);
+                 obj = {
+                login:jsonTable.login,
+                avatar:jsonTable.avatar_url,
+                repos:jsonTable.public_repos,
+                followers:jsonTable.followers
+                  }
+                document.getElementById("ProfilImage").src= obj.avatar;
+                document.getElementById("nameUser").innerHTML= obj.login;
+                document.getElementById("followers").innerHTML= obj.followers;
+                document.getElementById("repos").innerHTML= obj.repos;
+                document.getElementById("linkProfile").href= "https://github.com/"+ obj.login;
+              }
+              
+          } 
+        
+            table.send();
+          }
+
+        function firstStep(){
+          var array=[];
+          var objAfiche;
+          var nom= document.getElementsByClassName("LeNom");
+          var pic= document.getElementsByClassName("photo");
+
+          fetch('https://api.github.com/users')
+              .then(res => res.json())
+                .then(data => {
+                  for (var i=0;i<4;i++){
+                    objAfiche={
+                      UserName: data[i].login,
+                      UserPicture: data[i].avatar_url
+                    }
+                    array.push(objAfiche);
+                    nom.item(i).innerHTML= array[i].UserName;
+                    pic.item(i).src=array[i].UserPicture;
+                  }
+
+                });
+
+        }
+    
+    </script>
+</body>
+</html>

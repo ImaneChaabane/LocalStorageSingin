@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connection</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet"> 
+    <link rel="stylesheet" href="styleRegister.css">  
+    <title>Register</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="signup-form" style="margin: 100px 400px; box-shadow: 3px 2px 9px; border-radius: 10px;
+     padding: 30px;">
+        <form action="/examples/actions/confirmation.php" method="post">
+            <h2>Connexion</h2>
+    <div  class="form-group">
+        <input id="login-email" type="email" class="form-control" name="email" placeholder="Email" required="required">
+    </div>
+    <div class="form-group">
+        <input id="login-pass" type="password" class="form-control" name="password" placeholder="Password" required="required">
+    </div>
+    </form>
+    <div class="form-group">
+        <center><button id="btn" type="submit" class="btn btn-success btn-lg btn-block" style="width:50%" onclick="ConnectUser()">Connexion</button></center>
+    </div>
+    </div>
+
+
+
+
+    <script>
+
+            function ConnectUser() {
+                var loginEmail = document.getElementById("login-email").value;
+                var loginPass = document.getElementById("login-pass").value;
+             if (localStorage.getItem('Utilisateurs')) {
+        const allStoredUsers = JSON.parse(localStorage.getItem('Utilisateurs'));
+        const matchedUser = allStoredUsers.filter(user => {
+            return loginEmail === user.email && loginPass === user.password;
+        })
+        if (matchedUser.length) {
+
+            window.location='ajax3.html';
+            // console.log('Login successful')
+        } else {
+            alert("Vos Informations ne sont pas valides")
+        }
+    }
+}
+
+    </script>
+</body>
+</html>
